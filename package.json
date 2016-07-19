@@ -4,7 +4,8 @@
   "description": "angular restautant",
   "main": "",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "node server/bin/www"
   },
   "author": "zeshi",
   "license": "ISC",

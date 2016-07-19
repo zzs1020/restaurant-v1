@@ -1,6 +1,6 @@
 var serverapp = require('../server');
 var config = require('../config/config');
 
-serverapp.listen(config.serverport, "10.0.0.18", function(){
-    console.log('server started on 10.0.0.18: ', config.serverport);
+serverapp.listen(config.serverport, function(){
+    console.log('server started on : ', config.serverport);
 });
