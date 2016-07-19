@@ -1,7 +1,7 @@
 /**
  * Created by ZZS on 6/25/16.
  */
-var app = angular.module('restaurantApp', ['ngRoute']);
+var app = angular.module('restaurantApp', ['ngRoute', 'ui.router']);
 
 app.config(function ($routeProvider) {
     $routeProvider.when('/', {
