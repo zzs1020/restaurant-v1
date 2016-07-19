@@ -2,12 +2,19 @@
   "name": "restaurant",
   "version": "1.0.0",
   "description": "angular restautant",
+  "engines": {
+    "node": "4.4.7"
+  },
   "main": "",
   "scripts": {
     "test": "npm test",
     "start": "node server/bin/www"
   },
   "author": "zeshi",
+  "repository": {
+    "type": "git",
+    "url" : "https://github.com/zzs1020/restaurant-v1.git"
+  },
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
