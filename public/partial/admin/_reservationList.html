@@ -1,0 +1,122 @@
+<div class="tabPart">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li role="menuitem" class="active"><a href="#/reservationList" data-toggle="tab">
+            &nbsp;&nbsp;<span class="glyphicon glyphicon-calendar"></span> Reservations</a></li>
+        <li role="menuitem"><a href="#/seating" data-toggle="tab">
+            <span class="glyphicon glyphicon-th"></span> Seating</a></li>
+        <li role="menuitem"><a href="#/profile" data-toggle="tab">
+            <span class="glyphicon glyphicon-list"></span> Profile</a></li>
+        <li role="menuitem"><a href="#/setting" data-toggle="tab">
+            <span class="glyphicon glyphicon-cog"></span> Setting</a></li>
+        <li role="menuitem"><a href="#/contacts" data-toggle="tab">
+            <span class="glyphicon glyphicon-user"></span> Contacts</a></li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="reservationPanel">
+            <h3>RESERVATION LIST <a href="#/" class="btn btn-default btn-sm"><span class="fa fa-plus"></span> Add a new reservation</a></h3>
+
+            <div class="row" >
+                <div class="col-md-2">
+                    <div class="input-group searchGroup">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default searchBtn">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <input type="text" ng-model="resvCtrl.searchFilter" placeholder="search reservations..."  class="form-control searchBox" >
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-right">
+                <div class="container-fluid">
+                    <ul class="pagination" ng-repeat="emptyElement in resvCtrl.range(resvCtrl.pageAmount_scope) track by $index">
+                        <!--<li class="disabled"><a href="#" id="previous">&laquo;</a></li>-->
+                        <li ng-class="{active: resvCtrl.pageCurrent_scope === ($index+1)}"><a href="" ng-click="resvCtrl.setCurrentPage($index+1)">{{$index+1}}</a></li>
+                        <!--<li><a href="#" id="next">&raquo;</a></li>-->
+                    </ul>
+                </div>
+            </nav>
+
+            <div id="page1" class="pageContent pageShow">
+                <table class="table table-responsive table-hover">
+                    <thead>
+                    <tr>
+                        <th>Confirmation Code</th>
+                        <th>Name</th>
+                        <th>Party Date</th>
+                        <th># of People</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="reservation in resvCtrl.list | filter: resvCtrl.searchFilter">
+                        <td><a href="" ng-click="resvCtrl.openDetail(reservation._id)">{{reservation._id}}</a></td>
+                        <td>{{reservation.guestName}}</td>
+                        <td>{{reservation.date | date}}</td>
+                        <td>{{reservation.partySize}}</td>
+
+                        <td>
+                            <button class="btn btn-primary" ng-click="resvCtrl.setSearchId(reservation._id)">
+                                <span class="glyphicon glyphicon-pencil"></span> Edit
+                            </button>
+                            <button class="btn btn-danger" ng-click="resvCtrl.del(reservation._id)">
+                                <span class="glyphicon glyphicon-remove"></span> Remove
+                            </button>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modal-detail">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Booking details</h1>
+            </div>
+            <div class="modal-body">
+                <p class="text-danger">created time -- {{resvCtrl.current.createdTime | date}}</p>
+                <table class="table">
+                    <tr>
+                        <th>code:</th>
+                        <td>{{resvCtrl.current._id}}</td>
+                    </tr>
+                    <tr>
+                        <th>reserved date:</th>
+                        <td>{{resvCtrl.current.date | date}}</td>
+                    </tr>
+                    <tr>
+                        <th>reserved time:</th>
+                        <td>{{homeCtrl.formatTime(resvCtrl.current.time)}}</td>
+                    </tr>
+                    <tr>
+                        <th>guest name:</th>
+                        <td>{{resvCtrl.current.guestName}}</td>
+                    </tr>
+                    <tr>
+                        <th>email:</th>
+                        <td>{{resvCtrl.current.guestEmail}}</td>
+                    </tr>
+                    <tr>
+                        <th>party size:</th>
+                        <td>{{resvCtrl.current.partySize}}</td>
+                    </tr>
+                    <tr>
+                        <th>phone:</th>
+                        <td>{{resvCtrl.current.guestPhone}}</td>
+                    </tr>
+                    <tr>
+                        <th>special requirements:</th>
+                        <td>{{resvCtrl.current.special}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

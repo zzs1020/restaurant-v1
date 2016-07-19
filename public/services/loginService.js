@@ -1,0 +1,25 @@
+/**
+ * Created by ZZS on 7/2/16.
+ */
+app.factory('loginService', ['$http', '$rootScope', function ($http, $rootScope) {
+
+    var service = {
+        // isLoggedIn: false,
+        session: function () {
+            return $http.get('/api/session');
+        },
+        logout: function () {
+            return $http.get('/logout').then(function (res) {
+                $rootScope.isLoggedIn = false;
+            })
+        },
+        login: function (user) {
+            return $http.post('/api/passportlogin', user).then(function (res) {
+                console.log(res.data);
+                $rootScope.isLoggedIn = true;
+            });
+        }
+    };
+
+    return service;
+}]);

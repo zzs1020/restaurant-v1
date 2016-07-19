@@ -1,0 +1,33 @@
+<div class="tabPart" ng-if="!isLoggedIn">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li role="presentation"><a href="#/reservation">Guest</a></li>
+        <li role="presentation" class="active"><a href="#/login">Owner</a></li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane in active">
+            <h3>ADMINISTRATOR LOGIN</h3>
+            <span ng-show="loginCtrl.errorMessage" class="text-danger">{{loginCtrl.errorMessage}}</span>
+            <form name="ownerForm" ng-submit="loginCtrl.login()">
+                <div class="form-group">
+                    <label for="username">User Name*</label>
+                    <span class="text-danger" ng-show="ownerForm.username.$dirty && ownerForm.username.$error.required">This is a required field</span>
+
+                    <input required ng-model="loginCtrl.user.username" id="username" name="username" type="text" placeholder="admin" class="form-control">
+                    </div>
+                <div class="form-group">
+                    <label for="password">Password*</label>
+                    <span class="text-danger" ng-show="ownerForm.password.$dirty && ownerForm.password.$error.required">This is a required field</span>
+
+                    <input required ng-model="loginCtrl.user.password" name="password" id="password" type="password" placeholder="Password" class="form-control">
+                </div>
+                <div class="submit">
+                    <input type="submit" class="btn btn-primary btn-lg" value="Log in" ng-disabled="ownerForm.$invalid || loginCtrl.dataLoading">
+                    <a href="">Forget Password?</a>
+                    <img ng-if="loginCtrl.dataLoading" ng-src="assets/img/loader_pot.gif" ng-style="{width: '58px'}">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div ng-if="isLoggedIn"><a href="#/reservationList"><h1>You have Logged In, click here go back</h1></a></div>

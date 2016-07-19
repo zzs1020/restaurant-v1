@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="restaurantApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant System</title>
+    <!--bootstrap css and my css-->
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/font-awesome-4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body ng-controller="HomeController as homeCtrl">
+<noscript>please enable javascript</noscript>
+
+<div class="outer-container">
+
+
+<!--top nav bar put here-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <!--put container inside nav can align contents center while bg is full screen-->
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target="#wideHeader" class="navbar-toggle collapsed">
+                <span class="sr-only">toggle navbar</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#/" class="navbar-brand">
+                <span class="glyphicon glyphicon-cutlery"></span> Restaurant System
+            </a>
+        </div>
+
+        <!--collect nav links forms and other content for toggling-->
+        <div class="collapse navbar-collapse" id="wideHeader">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li><a href="#/editReservation"><span class="glyphicon glyphicon-bookmark"></span> My Reservation</a></li>
+                <li><a href="#/about"><span class="glyphicon glyphicon-question-sign"></span> About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--main part of the page (should only have one main tag)-->
+<main class="container">
+    <!--ngView partial can't have full html structure, otherwise app froze-->
+    <div ng-view></div>
+</main>
+
+<!--put address, other info here-->
+<footer class="container-fluid">
+
+        <div class="row">
+            <div class="col-xs-6 col-sm-6">
+                <address>address: 347 Somerset, NJ 08830</address>
+                <a href="http://www.angularjs.org">Made by Steve</a>
+                <p>06/2016</p>
+            </div>
+            <div class="col-xs-3 col-sm-3 pull-right">
+                <span ng-show="isLoggedIn">
+                    <a href="/logout" class="bigFont"><span class="glyphicon glyphicon-log-out"></span> log out</a>
+                </span>
+            </div>
+        </div>
+
+</footer>
+
+</div>
+<!--below import angular and my js-->
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/angular-route/angular-route.min.js"></script>
+<script src="app.js"></script>
+<script src="controllers/HomeController.js"></script>
+<script src="controllers/LoginController.js"></script>
+<script src="controllers/ReservationController.js"></script>
+<script src="controllers/ProfileController.js"></script>
+<script src="controllers/ContactController.js"></script>
+<script src="controllers/TableController.js"></script>
+<script src="services/loginService.js"></script>
+<script src="services/reserveService.js"></script>
+<script src="services/profileService.js"></script>
+<script src="services/contactService.js"></script>
+<script src="services/tableService.js"></script>
+<script src="lib/moment/moment.js"></script>
+
+</body>
+</html>

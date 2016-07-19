@@ -1,0 +1,56 @@
+<div class="tabPart">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li role="menuitem"><a href="#/reservationList" data-toggle="tab">
+            &nbsp;&nbsp;<span class="glyphicon glyphicon-calendar"></span> Reservations</a></li>
+        <li role="menuitem"><a href="#/seating" data-toggle="tab">
+            <span class="glyphicon glyphicon-th"></span> Seating</a></li>
+        <li role="menuitem"><a href="#/profile" data-toggle="tab">
+            <span class="glyphicon glyphicon-list"></span> Profile</a></li>
+        <li role="menuitem" class="active"><a href="#/setting" data-toggle="tab">
+            <span class="glyphicon glyphicon-cog"></span> Setting</a></li>
+        <li role="menuitem"><a href="#/contacts" data-toggle="tab">
+            <span class="glyphicon glyphicon-user"></span> Contacts</a></li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="settingPanel">
+            <h3>SETTING / UPDATE PROFILE</h3>
+
+            <form method="post" ng-submit="profileCtrl.updateProfile(profileCtrl.profile)" name="profileForm">
+                <div class="form-group">
+                    <label>restaurant name:</label>
+                    <input type="text" ng-model="profileCtrl.profile.restaurantName" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>owner name:</label>
+                    <input type="text" ng-model="profileCtrl.profile.ownerName" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>address:</label>
+                    <input type="text" ng-model="profileCtrl.profile.address" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>phone:</label>
+                    <input type="text" ng-model="profileCtrl.profile.phone" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>email:</label>
+                    <input type="email" ng-model="profileCtrl.profile.email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>employees:</label>
+                    <input type="number" ng-model="profileCtrl.profile.employees" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>provided services:</label>
+                    <input type="text" ng-model="profileCtrl.profile.services" class="form-control">
+                </div>
+                <input type="submit" ng-disabled="profileForm.$invalid" class="btn btn-success" value="update">
+
+                <h2 class="bg-success"> {{profileCtrl.successUpdate}}</h2>
+            </form>
+
+            
+        </div>
+
+    </div>
+</div>

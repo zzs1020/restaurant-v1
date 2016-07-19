@@ -1,0 +1,29 @@
+{
+  "name": "restaurant",
+  "version": "1.0.0",
+  "description": "angular restautant",
+  "main": "",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "zeshi",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "1.0.2",
+    "compression": "1.0.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "1.0.1",
+    "ejs": "^2.4.2",
+    "express": "4.1.1",
+    "express-session": "1.0.4",
+    "method-override": "1.0.0",
+    "mongoose": "^4.5.3",
+    "morgan": "1.0.1",
+    "passport": "^0.2.0",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "1.0.0",
+    "serve-static": "1.1.0"
+  }
+}

@@ -1,0 +1,71 @@
+<h1>
+    Reservation search
+    <a href="#/reservationList" class="btn btn-default"><span class="glyphicon glyphicon-list-alt"></span> Go to list</a>
+</h1>
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-6">
+            <!--searchId is binding to $rootScope-->
+            <input type="text" class="form-control" ng-model="searchId" placeholder="enter confirmation code">
+        </div>
+        <button class="btn btn-primary" ng-click="resvCtrl.loadDetail(searchId)">Click to Edit</button>
+    </div>
+</div>
+<form method="post" name="guestForm" ng-submit="resvCtrl.update()">
+    <!--<div class="row">-->
+        <!--<div class="form-group col-md-6">-->
+            <!--<label for="dateEnter">Date*</label>-->
+            <!--<span class="text-danger" ng-show="guestForm.date.$dirty && guestForm.date.$error.required">This is a required field</span>-->
+            <!--<span class="text-danger" ng-show="guestForm.date.$dirty && guestForm.date.$error.date">invalid date</span>-->
+            <!--<input required name="date" ng-model="resvCtrl.current.date" id="dateEnter" type="date" class="form-control" placeholder="MM/dd/yyyy">-->
+        <!--</div>-->
+        <!--<div class="form-group col-md-6">-->
+            <!--<label for="timeEnter">Time*</label>-->
+            <!--<span class="text-danger" ng-show="guestForm.time.$dirty && guestForm.time.$error.required">This is a required field</span>-->
+            <!--<span class="text-danger" ng-show="guestForm.time.$dirty && guestForm.time.$error.time">invalid time</span>-->
+            <!--<input required name="time" ng-model="resvCtrl.current.time" type="time" id="timeEnter" placeholder="09:05 PM" class="form-control">-->
+        <!--</div>-->
+    <!--</div>-->
+    <strong>Date: </strong>{{resvCtrl.current.date | date}} <br>
+    <strong>Time: </strong>{{homeCtrl.formatTime(resvCtrl.current.time)}}
+
+    <div class="form-group">
+        <label for="nameEnter">Name*</label>
+        <span class="text-danger" ng-show="guestForm.guestName.$dirty && guestForm.guestName.$error.required">This is a required field</span>
+        <input required name="guestName" ng-model="resvCtrl.current.guestName" type="text" id="nameEnter" placeholder="Mr./Ms. Super Awesome Customer" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="emailEnter">Email*</label>
+        <span class="text-danger" ng-show="guestForm.guestEmail.$dirty && guestForm.guestEmail.$error.required">This is a required field</span>
+        <span class="text-danger" ng-show="ownerForm.guestEmail.$dirty && ownerForm.guestEmail.$error.email">invalid email</span>
+        <input required name="guestEmail" ng-model="resvCtrl.current.guestEmail" type="email" id="emailEnter" placeholder="example@domain.com" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="phoneEnter">Phone</label>
+        <span class="text-danger" ng-show="guestForm.guestPhone.$dirty && guestForm.guestPhone.$error.number">only numbers are allowed here</span>
+        <span class="text-danger" ng-show="guestForm.guestPhone.$dirty && guestForm.guestPhone.$error.minlength">minimum 10 digests</span>
+        <span class="text-danger" ng-show="guestForm.guestPhone.$dirty && guestForm.guestPhone.$error.maxlength">maximum 10 digests</span>
+
+        <input type="tel" id="phoneEnter" name="guestPhone" ng-model="resvCtrl.current.guestPhone" ng-minlength="10" ng-maxlength="10" placeholder="9781231234" class="form-control">
+    </div>
+    <div class="row">
+        <div class="form-group col-md-3">
+            <label for="partyEnter">Party Size</label>
+            <span class="text-danger" ng-show="guestForm.partySize.$dirty && guestForm.partySize.$error.number">only numbers are allowed here</span>
+            <span class="text-danger" ng-show="guestForm.partySize.$dirty && guestForm.partySize.$error.max">maximum 200 guests</span>
+            <span class="text-danger" ng-show="guestForm.partySize.$dirty && guestForm.partySize.$error.min">minimum 1 guest</span>
+
+            <input name="partySize" ng-model="resvCtrl.current.partySize" max="200" min="1" type="number" id="partyEnter" placeholder="1~200" class="form-control">
+        </div>
+        <div class="form-group col-md-9">
+            <label for="specialEnter">Other Requirements</label>
+            <input ng-model="resvCtrl.current.special" name="special" type="text" id="specialEnter" placeholder="love spicy..." class="form-control">
+        </div>
+    </div>
+    <div class="submit">
+        <input ng-disabled="guestForm.$invalid" type="submit" class="btn btn-primary btn-lg" value="Update">
+        <h2 class="bg-success">{{resvCtrl.updateSuccessInfo}}</h2>
+    </div>
+    <p class="help-block lineHeight">Blank with * is required.</p>
+
+</form>

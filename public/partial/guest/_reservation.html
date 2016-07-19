@@ -1,0 +1,117 @@
+<div class="tabPart">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li role="presentation" class="active"><a href="#/reservation">Guest</a></li>
+        <li role="presentation"><a href="#/login">Owner</a></li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane in active">
+            <h3>MAKE A RESERVATION</h3>
+
+            <form method="post" name="guestForm" ng-submit="resvCtrl.reserve()">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="dateEnter">Date*</label>
+                        <span class="text-danger" ng-show="guestForm.date.$dirty && guestForm.date.$error.required">This is a required field</span>
+                        <span class="text-danger" ng-show="guestForm.date.$dirty && guestForm.date.$error.date">invalid date</span>
+                        <input required name="date" ng-model="resvCtrl.guest.date" id="dateEnter" type="date" class="form-control" placeholder="MM/dd/yyyy">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="timeEnter">Time*</label>
+                        <span class="text-danger" ng-show="guestForm.time.$dirty && guestForm.time.$error.required">This is a required field</span>
+                        <span class="text-danger" ng-show="guestForm.time.$dirty && guestForm.time.$error.time">invalid time</span>
+                        <input required name="time" ng-model="resvCtrl.guest.time" type="time" id="timeEnter" placeholder="09:05 PM" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nameEnter">Name*</label>
+                    <span class="text-danger" ng-show="guestForm.guestName.$dirty && guestForm.guestName.$error.required">This is a required field</span>
+                    <input required name="guestName" ng-model="resvCtrl.guest.guestName" type="text" id="nameEnter" placeholder="Mr./Ms. Super Awesome Customer" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="emailEnter">Email*</label>
+                    <span class="text-danger" ng-show="guestForm.guestEmail.$dirty && guestForm.guestEmail.$error.required">This is a required field</span>
+                    <span class="text-danger" ng-show="ownerForm.guestEmail.$dirty && ownerForm.guestEmail.$error.email">invalid email</span>
+                    <input required name="guestEmail" ng-model="resvCtrl.guest.guestEmail" type="email" id="emailEnter" placeholder="example@domain.com" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="phoneEnter">Phone</label>
+                    <span class="text-danger" ng-show="guestForm.guestPhone.$dirty && guestForm.guestPhone.$error.number">only numbers are allowed here</span>
+                    <span class="text-danger" ng-show="guestForm.guestPhone.$dirty && guestForm.guestPhone.$error.minlength">minimum 10 digests</span>
+                    <span class="text-danger" ng-show="guestForm.guestPhone.$dirty && guestForm.guestPhone.$error.maxlength">maximum 10 digests</span>
+
+                    <input type="tel" id="phoneEnter" name="guestPhone" ng-model="resvCtrl.guest.guestPhone" ng-minlength="10" ng-maxlength="10" placeholder="9781231234" class="form-control">
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="partyEnter">Party Size</label>
+                        <span class="text-danger" ng-show="guestForm.partySize.$dirty && guestForm.partySize.$error.number">only numbers are allowed here</span>
+                        <span class="text-danger" ng-show="guestForm.partySize.$dirty && guestForm.partySize.$error.max">maximum 200 guests</span>
+                        <span class="text-danger" ng-show="guestForm.partySize.$dirty && guestForm.partySize.$error.min">minimum 1 guest</span>
+
+                        <input name="partySize" ng-model="resvCtrl.guest.partySize" max="200" min="1" type="number" id="partyEnter" placeholder="1~200" class="form-control">
+                    </div>
+                    <div class="form-group col-md-9">
+                        <label for="specialEnter">Other Requirements</label>
+                        <input ng-model="resvCtrl.guest.special" name="special" type="text" id="specialEnter" placeholder="love spicy..." class="form-control">
+                    </div>
+                </div>
+                <div class="submit">
+                    <input ng-disabled="guestForm.$invalid" type="submit" class="btn btn-primary btn-lg" value="Reserve">
+                    <a href="#/editReservation">Search/Change/Cancel Your Reservation?</a>
+                </div>
+                <p class="help-block">Blank with * is required.</p>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="modal-success-info">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1><span class="glyphicon glyphicon-glass"></span> You got it, cheers!</h1>
+                <p>Remember you code for <a href="#/editReservation">querying/changing/cancelling</a> your reservation!</p>
+            </div>
+            <div class="modal-body">
+                <p class="text-danger">created time -- {{resvCtrl.current.createdTime | date}}</p>
+                <table class="table">
+                    <tr>
+                        <th>code:</th>
+                        <td>{{resvCtrl.current._id}}</td>
+                    </tr>
+                    <tr>
+                        <th>reserved date:</th>
+                        <td>{{resvCtrl.current.date | date}}</td>
+                    </tr>
+                    <tr>
+                        <th>reserved time:</th>
+                        <td>{{homeCtrl.formatTime(resvCtrl.current.time)}}</td>
+                    </tr>
+                    <tr>
+                        <th>guest name:</th>
+                        <td>{{resvCtrl.current.guestName}}</td>
+                    </tr>
+                    <tr>
+                        <th>email:</th>
+                        <td>{{resvCtrl.current.guestEmail}}</td>
+                    </tr>
+                    <tr>
+                        <th>party size:</th>
+                        <td>{{resvCtrl.current.partySize}}</td>
+                    </tr>
+                    <tr>
+                        <th>phone:</th>
+                        <td>{{resvCtrl.current.guestPhone}}</td>
+                    </tr>
+                    <tr>
+                        <th>special requirements:</th>
+                        <td>{{resvCtrl.current.special}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

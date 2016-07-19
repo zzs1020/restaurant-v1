@@ -1,0 +1,103 @@
+main {
+    padding-top: 70px;
+    padding-bottom: 120px;/*set height of footer*/
+}
+html, body {
+    height:100%;/*set parent height*/
+}
+.outer-container {
+    min-height:100%; /*must have, when document very short, force footer at the bottom*/
+    position:relative;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rebeccapurple;
+    color: #fff;
+    padding: 10px;
+}
+footer a{
+    color: #fff;
+    opacity: 0.9;
+}
+footer a:hover{
+    color: #fff;
+    opacity: 1;
+}
+.bigFont {
+    font-size: 2em;
+}
+
+/*login form styling*/
+input.ng-dirty.ng-invalid {
+    border-color: #fa787e;
+    box-shadow: 0 0 5px #fa787e;
+}
+.text-danger {
+    color: indianred;
+}
+
+/*search bar slide effect part*/
+.searchGroup {
+
+}
+.searchBtn {
+    border-radius: 5px;
+    border-right: none;
+    padding-right: 9px;
+}
+.input-group .form-control {
+    width: 5px;
+    padding: 2px;
+    border-left: none;
+    box-shadow: none;
+    border-radius: 5px;
+}
+.searchBox {
+    /*visibility: hidden;*/
+    transition: all 1s;
+}
+.searchGroup:hover .searchBox {
+    /*visibility: visible;*/
+    width: 200px;
+    padding-left: 8px;
+}
+
+/*tableshape*/
+.tableShape2, .tableShape4, .tableShape8 {
+    float: left;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #dcdcdc;
+    /*background-color: #eee;*/
+    background: url("../img/table-bg.jpg");
+    margin: 10px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 2px 5px 0 #cccbcb;
+}
+.tableShape8 {
+    border-radius: 5px;
+}
+.tableShape4 {
+    border-radius: 15px;
+}
+.tableShape2 {
+    border-radius: 40px;
+}
+.occupiedTable {
+    background-color: #ffa71d; /*since used bg url, this not needed anymore*/
+}
+.tableShape2:hover,.tableShape4:hover,.tableShape8:hover {
+    top: -1px;
+    box-shadow: 0 2px 5px 3px #cccbcb;
+}
+
+/*select style */
+.styledSelect {
+    background-color: #ffbc73;
+    color: #fff; /*font color*/
+    border: none;
+}

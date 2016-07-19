@@ -1,0 +1,70 @@
+<div class="tabPart">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li role="menuitem"><a href="#/reservationList" data-toggle="tab">
+            &nbsp;&nbsp;<span class="glyphicon glyphicon-calendar"></span> Reservations</a></li>
+        <li role="menuitem" class="active"><a href="#/seating" data-toggle="tab">
+            <span class="glyphicon glyphicon-th"></span> Seating</a></li>
+        <li role="menuitem"><a href="#/profile" data-toggle="tab">
+            <span class="glyphicon glyphicon-list"></span> Profile</a></li>
+        <li role="menuitem"><a href="#/setting" data-toggle="tab">
+            <span class="glyphicon glyphicon-cog"></span> Setting</a></li>
+        <li role="menuitem"><a href="#/contacts" data-toggle="tab">
+            <span class="glyphicon glyphicon-user"></span> Contacts</a></li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="seatingPanel">
+            <h3>SEATING AREA</h3>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-responsive table-hover">
+                            <thead>
+                            <tr>
+                                <th>Table#</th>
+                                <th>Size</th>
+                                <th>Status</th>
+                                <th>Since</th>
+                                <th>CNF#</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="table in tableCtrl.tables | orderBy: 'tid'">
+                                <td>{{table.tid}}</td>
+                                <td>{{table.size}}</td>
+                                <td ng-if="table.status" class="text-success">available</td>
+                                <td ng-if="!table.status" class="text-danger">occupied</td>
+                                <td ng-if="table.time !== '-'">{{homeCtrl.formatTime(table.time)}}</td>
+                                <td ng-if="table.time === '-'">-</td>
+                                <td ng-if="table.code !== '-'">
+                                    {{table.code.substring(3,8)}}
+                                </td>
+                                <td ng-if="table.code === '-'">-</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6" ng-controller="ReservationController as resvCtrl">
+                        <div ng-repeat="table in tableCtrl.tables | orderBy: 'tid'">
+                            <div ng-class="[tableCtrl.shapeBind+table.size, {occupiedTable: !table.status}]">
+                                Table #{{table.tid}}
+                                <span ng-hide="table.status">occupied by</span> <span ng-show="table.status">available</span>
+                                <strong>{{table.code.substring(3,8)}}</strong>
+
+
+                                    <select class="styledSelect" ng-if="table.status" ng-change="tableCtrl.update(table._id, tableCtrl.chose[table.tid])" ng-model="tableCtrl.chose[table.tid]" ng-options="guest._id.substring(3,8) for guest in resvCtrl.list">
+                                    </select>
+
+
+
+                                <button ng-if="!table.status" ng-click="tableCtrl.cancelTable(table._id, table.tid)" type="button" class="btn btn-danger btn-sm">cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
