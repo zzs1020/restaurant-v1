@@ -1,6 +1,6 @@
 var serverapp = require('../server');
 var config = require('../config/config');
 
-serverapp.listen(config.serverport, function(){
+serverapp.listen((process.env.PORT || config.serverport), function(){
     console.log('server started on : ', config.serverport);
 });
