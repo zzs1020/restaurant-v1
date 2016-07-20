@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7aba41d-726c-4c37-b5f9-c237092af3bd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="restaurant.iws" />
@@ -356,7 +355,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202744000" />
+    <option name="totallyTimeSpent" value="202904000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="80" y="23" width="1317" height="711" extended-state="0" />
