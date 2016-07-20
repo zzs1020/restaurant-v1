@@ -8,11 +8,12 @@ app.factory('loginService', ['$http', '$rootScope', function ($http, $rootScope)
         session: function () {
             return $http.get('/api/session');
         },
-        logout: function () {
-            return $http.get('/logout').then(function (res) {
-                $rootScope.isLoggedIn = false;
-            })
-        },
+        // logout: function () {
+        //     $http.get('/logout').then(function (res) {
+        //         console.log('logout----->------>',res.data);
+        //         $rootScope.isLoggedIn = false;
+        //     })
+        // },
         login: function (user) {
             return $http.post('/api/passportlogin', user).then(function (res) {
                 console.log(res.data);
