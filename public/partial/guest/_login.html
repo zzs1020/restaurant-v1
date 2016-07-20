@@ -1,10 +1,5 @@
-<div class="tabPart" ng-if="!isLoggedIn">
-    <ul class="nav nav-tabs nav-justified" role="tablist">
-        <li role="presentation"><a href="#/reservation">Guest</a></li>
-        <li role="presentation" class="active"><a href="#/login">Owner</a></li>
-    </ul>
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane in active">
+
+        <div ng-if="!isLoggedIn">
             <h3>ADMINISTRATOR LOGIN</h3>
             <span ng-show="loginCtrl.errorMessage" class="text-danger">{{loginCtrl.errorMessage}}</span>
             <form name="ownerForm" ng-submit="loginCtrl.login()">
@@ -27,7 +22,6 @@
                 </div>
             </form>
         </div>
-    </div>
-</div>
 
-<div ng-if="isLoggedIn"><a href="#/reservationList"><h1>You have Logged In, click here go back</h1></a></div>
+
+<div ng-if="isLoggedIn"><a ui-sref="admin.reservationList"><h1>You have Logged In, click here go back</h1></a></div>

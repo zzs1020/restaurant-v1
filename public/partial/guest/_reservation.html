@@ -1,10 +1,4 @@
-<div class="tabPart">
-    <ul class="nav nav-tabs nav-justified" role="tablist">
-        <li role="presentation" class="active"><a href="#/reservation">Guest</a></li>
-        <li role="presentation"><a href="#/login">Owner</a></li>
-    </ul>
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane in active">
+
             <h3>MAKE A RESERVATION</h3>
 
             <form method="post" name="guestForm" ng-submit="resvCtrl.reserve()">
@@ -58,14 +52,11 @@
                 </div>
                 <div class="submit">
                     <input ng-disabled="guestForm.$invalid" type="submit" class="btn btn-primary btn-lg" value="Reserve">
-                    <a href="#/editReservation">Search/Change/Cancel Your Reservation?</a>
+                    <a ui-sref="editReservation">Search/Change/Cancel Your Reservation?</a>
                 </div>
                 <p class="help-block">Blank with * is required.</p>
             </form>
-        </div>
 
-    </div>
-</div>
 
 
 <div class="modal fade" id="modal-success-info">
@@ -73,7 +64,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1><span class="glyphicon glyphicon-glass"></span> You got it, cheers!</h1>
-                <p>Remember you code for <a href="#/editReservation">querying/changing/cancelling</a> your reservation!</p>
+                <p>Remember you code for <a ui-sref="editReservation">querying/changing/cancelling</a> your reservation!</p>
             </div>
             <div class="modal-body">
                 <p class="text-danger">created time -- {{resvCtrl.current.createdTime | date}}</p>
