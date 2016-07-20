@@ -15,7 +15,7 @@
 
                     <input required ng-model="loginCtrl.user.password" name="password" id="password" type="password" placeholder="Password" class="form-control">
                 </div>
-                <div class="submit">
+                <div>
                     <input type="submit" class="btn btn-primary btn-lg" value="Log in" ng-disabled="ownerForm.$invalid || loginCtrl.dataLoading">
                     <a href="">Forget Password?</a>
                     <img ng-if="loginCtrl.dataLoading" ng-src="assets/img/loader_pot.gif" ng-style="{width: '58px'}">

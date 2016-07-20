@@ -8,6 +8,7 @@ app.controller('HomeController', ['loginService', '$rootScope', function (loginS
         return moment(time).format('LTS');
     };
     
+    $rootScope.isLoggedIn = false;
     (self.checkIfLoginWhenRefresh = function(){
         loginService.session().then(function (res) {
             console.log(res.data);
