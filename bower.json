@@ -17,7 +17,6 @@
   ],
   "dependencies": {
     "angular": "^1.5.7",
-    "angular-route": "^1.5.7",
     "bootstrap": "^3.3.6",
     "moment": "^2.14.1",
     "angular-ui-router": "^0.3.1"
