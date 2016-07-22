@@ -25,6 +25,7 @@
     "ejs": "^2.4.2",
     "express": "4.1.1",
     "express-session": "1.0.4",
+    "gulp": "^3.9.1",
     "method-override": "1.0.0",
     "mongoose": "^4.5.3",
     "morgan": "1.0.1",
@@ -32,6 +33,7 @@
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
     "passport-local": "1.0.0",
-    "serve-static": "1.1.0"
+    "serve-static": "1.1.0",
+    "uglify-js": "^2.7.0"
   }
 }
