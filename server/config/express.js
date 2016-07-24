@@ -23,7 +23,7 @@ module.exports = function () {
     app.use(morgan('dev'));// log every request to the console
     app.use(bodyParser.json()); //inculde request form to req.data
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(express.static('./public'));
+    app.use(express.static('./dist'));
     app.use(cookieParser());// read cookies (needed for auth)
 
     app.set('view engine', 'ejs');

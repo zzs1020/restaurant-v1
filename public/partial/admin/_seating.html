@@ -34,16 +34,17 @@
                         <div ng-repeat="table in tableCtrl.tables | orderBy: 'tid'">
                             <div ng-class="[tableCtrl.shapeBind+table.size, {occupiedTable: !table.status}]">
                                 Table #{{table.tid}}
-                                <span ng-hide="table.status">occupied by</span> <span ng-show="table.status">available</span>
-                                <strong>{{table.code.substring(3,8)}}</strong>
+                                <span ng-hide="table.status"> Occupied By </span>
+                                <span ng-show="table.status">Available</span>
+                                <div><strong>{{table.code.substring(3,8)}}</strong></div>
 
-
-                                    <select class="styledSelect" ng-if="table.status" ng-change="tableCtrl.update(table._id, tableCtrl.chose[table.tid])" ng-model="tableCtrl.chose[table.tid]" ng-options="guest._id.substring(3,8) for guest in resvCtrl.list">
+                                    <select class="styledSelect" ng-if="table.status" ng-model="tableCtrl.chose[table.tid]"
+                                            ng-change="tableCtrl.update(table._id, tableCtrl.chose[table.tid])"
+                                            ng-options="guest._id.substring(3,8) for guest in resvCtrl.list">
                                     </select>
 
-
-
-                                <button ng-if="!table.status" ng-click="tableCtrl.cancelTable(table._id, table.tid)" type="button" class="btn btn-danger btn-sm">cancel</button>
+                                <button ng-if="!table.status" ng-click="tableCtrl.cancelTable(table._id, table.tid)"
+                                        type="button" class="btn btn-danger btn-sm">cancel</button>
                             </div>
                         </div>
                     </div>

@@ -25,8 +25,8 @@ var app = angular.module('restaurantApp', ['ui.router']);
 //     });
 // });
 
-app.config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('home.reservation');
+app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/home/reservation');
 
     $stateProvider
         .state('home', {
@@ -106,4 +106,4 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'error.html'
         })
     ;
-});
+}]);
