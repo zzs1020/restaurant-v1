@@ -7,6 +7,11 @@ module.exports = function (app) {
     app.route('/api/contact')
         .get(isLoggedIn, ContactController.list)
         .post(isLoggedIn, ContactController.create)
+    
+    app.route('/api/contact/:id')
+        .get(isLoggedIn, ContactController.findById)
+        .post(isLoggedIn, ContactController.update)
+        .delete(isLoggedIn, ContactController.delete)
 };
 
 // route middleware to make sure a user is logged in

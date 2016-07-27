@@ -35,6 +35,12 @@ app.controller('ContactController', ['$resource', function ($resource) {
             self.newContact = {};
             loadContacts();
         })
+    };
+
+    self.delete = function (id) {
+        resourceObj.remove({id: id}, function () {
+            loadContacts();
+        })
     }
     
 

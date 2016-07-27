@@ -1,7 +1,7 @@
 
             <h3>CONTACTS</h3>
             <div class="container">
-                <form ng-submit="contactCtrl.create(contactCtrl.newContact)">
+                <form ng-submit="contactCtrl.create()">
                     <div class="form-inline">
                         <input type="text" placeholder="name" ng-model="contactCtrl.newContact.name" class="form-control">
                         <input type="text" placeholder="phone" ng-model="contactCtrl.newContact.phone" class="form-control">
@@ -15,11 +15,13 @@
                         <th>name</th>
                         <th>phone</th>
                         <th>email</th>
+                        <th>action</th>
                     </tr>
                     <tr ng-repeat="contact in contactCtrl.contacts">
                         <td>{{contact.name}}</td>
                         <td>{{contact.phone}}</td>
                         <td>{{contact.email}}</td>
+                        <td><button ng-click="contactCtrl.delete(contact._id)" class="btn btn-danger" type="button">delete</button></td>
                     </tr>
                 </table>
             </div>
