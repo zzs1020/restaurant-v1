@@ -1,29 +1,7 @@
 /**
  * Created by ZZS on 6/25/16.
  */
-var app = angular.module('restaurantApp', ['ui.router']);
-
-// app.config(function ($routeProvider) {
-//     $routeProvider.when('/reservation', {
-//         redirectTo: '/'
-//     }).when('/success', {
-//         templateUrl: 'partial/guest/_editReservation.html',
-//         controller: 'ReservationController',
-//         controllerAs: 'resvCtrl'
-//     }).when('/login', {
-        
-//     }).when('/reservationList', {
-
-//     }).when('/seating', {
-
-//     }).when('/profile', {
-
-//     }).when('/setting', {
-
-//     }).when('/contacts', {
-
-//     });
-// });
+var app = angular.module('restaurantApp', ['ui.router', 'ngResource']);
 
 app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home/reservation');
