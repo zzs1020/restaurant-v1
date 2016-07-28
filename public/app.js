@@ -1,7 +1,7 @@
 /**
  * Created by ZZS on 6/25/16.
  */
-var app = angular.module('restaurantApp', ['ui.router', 'ngResource']);
+var app = angular.module('restaurantApp', ['ui.router', 'ngResource', 'ngAnimate', 'ui.bootstrap']);
 
 app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$resourceProvider', function ($locationProvider, $stateProvider, $urlRouterProvider, $resourceProvider) {
     $resourceProvider.defaults.stripTrailingSlashes = false;

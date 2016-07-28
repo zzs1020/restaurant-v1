@@ -1,7 +1,7 @@
 /**
 * Created by ZZS on 6/25/16.
 */
-app.controller('ReservationController', ['$rootScope', 'reserveService', '$location', '$timeout', function ($rootScope, reserveService, $location, $timeout) {
+app.controller('ReservationController', ['$uibModal', '$rootScope', 'reserveService', '$location', '$timeout', function ($uibModal, $rootScope, reserveService, $location, $timeout) {
     var self = this;
     self.guest = {};
     self.list = [];
@@ -88,9 +88,32 @@ app.controller('ReservationController', ['$rootScope', 'reserveService', '$locat
     self.loadReservations();
     // self.list = reserveService.list();
 
+    // self.openDetail = function (id) {
+    //     self.loadDetail(id);
+    //     jQuery('#modal-detail').modal('show');
+    // };
     self.openDetail = function (id) {
-        self.loadDetail(id);
-        $('#modal-detail').modal('show');
+        
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'modal-detail.html',
+            controller: ['$uibModalInstance', 'current', function ($uibModalInstance, current) {
+                var self = this;
+                self.current = current;
+                self.ok = function () {
+                    $uibModalInstance.close();
+                };
+                self.cancel = function () {
+                    $uibModalInstance.dismiss('cancel');
+                }
+            }],
+            controllerAs: 'modalInstanceCtrl',
+            resolve: {
+               current: function () {
+                   return reserveService.detail(id);
+               }
+            }
+        })
     };
 
     self.loadDetail = function(id) {
@@ -107,3 +130,4 @@ app.controller('ReservationController', ['$rootScope', 'reserveService', '$locat
         return moment(time).format('LTS');
     };
 }]);
+

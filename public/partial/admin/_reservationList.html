@@ -55,51 +55,98 @@
                 </table>
             </div>
 
-
-
-<div class="modal fade" id="modal-detail">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1>Booking details</h1>
-            </div>
-            <div class="modal-body">
-                <p class="text-danger">created time -- {{resvCtrl.current.createdTime | date}}</p>
-                <table class="table">
-                    <tr>
-                        <th>code:</th>
-                        <td>{{resvCtrl.current._id}}</td>
-                    </tr>
-                    <tr>
-                        <th>reserved date:</th>
-                        <td>{{resvCtrl.current.date | date}}</td>
-                    </tr>
-                    <tr>
-                        <th>reserved time:</th>
-                        <td>{{homeCtrl.formatTime(resvCtrl.current.time)}}</td>
-                    </tr>
-                    <tr>
-                        <th>guest name:</th>
-                        <td>{{resvCtrl.current.guestName}}</td>
-                    </tr>
-                    <tr>
-                        <th>email:</th>
-                        <td>{{resvCtrl.current.guestEmail}}</td>
-                    </tr>
-                    <tr>
-                        <th>party size:</th>
-                        <td>{{resvCtrl.current.partySize}}</td>
-                    </tr>
-                    <tr>
-                        <th>phone:</th>
-                        <td>{{resvCtrl.current.guestPhone}}</td>
-                    </tr>
-                    <tr>
-                        <th>special requirements:</th>
-                        <td>{{resvCtrl.current.special}}</td>
-                    </tr>
-                </table>
-            </div>
+<div>
+    <script type="text/ng-template" id="modal-detail.html">
+        <div class="modal-header">
+            <h1>Booking details</h1>
         </div>
-    </div>
+        <div class="modal-body">
+            <p class="text-danger">created time -- {{modalInstanceCtrl.current.createdTime | date}}</p>
+            <table class="table">
+                <tr>
+                    <th>code:</th>
+                    <td>{{modalInstanceCtrl.current._id}}</td>
+                </tr>
+                <tr>
+                    <th>reserved date:</th>
+                    <td>{{modalInstanceCtrl.current.date | date}}</td>
+                </tr>
+                <tr>
+                    <th>reserved time:</th>
+                    <td>{{homeCtrl.formatTime(modalInstanceCtrl.current.time)}}</td>
+                </tr>
+                <tr>
+                    <th>guest name:</th>
+                    <td>{{modalInstanceCtrl.current.guestName}}</td>
+                </tr>
+                <tr>
+                    <th>email:</th>
+                    <td>{{modalInstanceCtrl.current.guestEmail}}</td>
+                </tr>
+                <tr>
+                    <th>party size:</th>
+                    <td>{{modalInstanceCtrl.current.partySize}}</td>
+                </tr>
+                <tr>
+                    <th>phone:</th>
+                    <td>{{modalInstanceCtrl.current.guestPhone}}</td>
+                </tr>
+                <tr>
+                    <th>special requirements:</th>
+                    <td>{{modalInstanceCtrl.current.special}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="modalInstanceCtrl.ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="modalInstanceCtrl.cancel()">Cancel</button>
+        </div>
+    </script>
 </div>
+
+<!--<div class="modal fade" id="modal-detail">-->
+    <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-header">-->
+                <!--<h1>Booking details</h1>-->
+            <!--</div>-->
+            <!--<div class="modal-body">-->
+                <!--<p class="text-danger">created time &#45;&#45; {{resvCtrl.current.createdTime | date}}</p>-->
+                <!--<table class="table">-->
+                    <!--<tr>-->
+                        <!--<th>code:</th>-->
+                        <!--<td>{{resvCtrl.current._id}}</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>reserved date:</th>-->
+                        <!--<td>{{resvCtrl.current.date | date}}</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>reserved time:</th>-->
+                        <!--<td>{{homeCtrl.formatTime(resvCtrl.current.time)}}</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>guest name:</th>-->
+                        <!--<td>{{resvCtrl.current.guestName}}</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>email:</th>-->
+                        <!--<td>{{resvCtrl.current.guestEmail}}</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>party size:</th>-->
+                        <!--<td>{{resvCtrl.current.partySize}}</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>phone:</th>-->
+                        <!--<td>{{resvCtrl.current.guestPhone}}</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>special requirements:</th>-->
+                        <!--<td>{{resvCtrl.current.special}}</td>-->
+                    <!--</tr>-->
+                <!--</table>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
