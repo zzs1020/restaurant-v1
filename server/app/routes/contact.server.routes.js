@@ -6,7 +6,7 @@ var ContactController = require('../controllers/contact.server.controller');
 module.exports = function (app) {
     app.route('/api/contact')
         .get(isLoggedIn, ContactController.list)
-        .post(isLoggedIn, ContactController.create)
+        .post(isLoggedIn, ContactController.create);
     
     app.route('/api/contact/:id')
         .get(isLoggedIn, ContactController.findById)

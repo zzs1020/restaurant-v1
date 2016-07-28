@@ -102,3 +102,7 @@ input.ng-dirty.ng-invalid {
     border: none;
 }
 
+/*used for ng-cloak, prevent flicker before angualr loaded*/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}

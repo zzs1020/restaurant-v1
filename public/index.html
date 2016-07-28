@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Restaurant System</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="restaurant">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--for html5 mode-->
+    <base href="/">
+
     <!--bootstrap css and my css-->
     <!--<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">-->
     <!--<link rel="stylesheet" href="lib/font-awesome-4.6.3/css/font-awesome.min.css">-->
@@ -59,14 +65,13 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6">
                 <address>address: 347 Somerset, NJ 08830</address>
-                <a href="http://www.angularjs.org">Made by Steve</a>
+                <a href="http://www.angularjs.org" target="_self">Made by Steve</a>
                 <p>06/2016</p>
             </div>
 
-            <div class="col-xs-3 col-sm-3 pull-right">
-                <span ng-show="isLoggedIn">
-                    <a href="/logout" class="logout-link"><span class="glyphicon glyphicon-log-out"></span> log out</a>
-                </span>
+            <div class="col-xs-3 col-sm-3 pull-right" ng-cloak>
+                <!--target="_self" tells angular don't route, do normal link-->
+                    <a ng-show="isLoggedIn" href="/logout" target="_self" class="logout-link"><span class="glyphicon glyphicon-log-out"></span> log out</a>
             </div>
         </div>
 

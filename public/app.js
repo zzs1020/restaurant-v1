@@ -3,8 +3,10 @@
  */
 var app = angular.module('restaurantApp', ['ui.router', 'ngResource']);
 
-app.config(['$stateProvider', '$urlRouterProvider', '$resourceProvider', function ($stateProvider, $urlRouterProvider, $resourceProvider) {
+app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$resourceProvider', function ($locationProvider, $stateProvider, $urlRouterProvider, $resourceProvider) {
     $resourceProvider.defaults.stripTrailingSlashes = false;
+    $locationProvider.html5Mode(true);
+    
     $urlRouterProvider.otherwise('/home/reservation');
 
     $stateProvider

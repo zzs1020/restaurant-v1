@@ -7,13 +7,11 @@ var bodyParser = require('body-parser');
 var session = require('express-session');//if use passport session, should use expresssession first
 var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
+var path = require('path');
 
 var passport = require('passport');
-// var localStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 
-// var mongoose = require('mongoose');
-// var Admin = mongoose.model('Admin');
 
 module.exports = function () {
     console.log('init process');
@@ -23,10 +21,12 @@ module.exports = function () {
     app.use(morgan('dev'));// log every request to the console
     app.use(bodyParser.json()); //inculde request form to req.data
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(express.static('./public'));
+    //path.join used to solve forward/ or back\ on different OS
+    //把这个路径下的文件host为静态文件, 所以可以通过localhost:8000/访问该目录下的任意文件
+    app.use(express.static(path.join(__dirname, '..', '..', 'public')));
     app.use(cookieParser());// read cookies (needed for auth)
 
-    app.set('view engine', 'ejs');
+    // app.set('view engine', 'ejs');
     
     //required for passport
     require('./passport')(passport); //pass passport for config
@@ -41,25 +41,13 @@ module.exports = function () {
     require('../app/routes/table.server.routes')(app);
     require('../app/routes/profile.server.routes')(app);
     require('../app/routes/contact.server.routes')(app);
-
-    // app.post('/api/passportlogin', passport.authenticate('local', {
-    //     successRedirect: '/',
-    //     failureRedirect: '/err'
-    // }));
-
-    // passport.use(new localStrategy(function (username, password, done) {
-    //     Admin.findOne({username: username}, function (err, user) {
-    //         if(err) {return done(err);}
-    //         if(!user) {
-    //             return done(null, false, {message: 'incorrect username'})
-    //         }
-    //         if (user.password !== password){
-    //             return done(null, false, {message: 'incorrect password'})
-    //         }
-    //         // console.log(user);
-    //         return done(null, user);
-    //     });
-    // }));
+    //if nothing matchs, send index file to client side, so angular will deal that route
+    //if we call url w/o # will go there
+    app.use('*', function (req, res, next) {
+        var indexFile = path.resolve(__dirname, '../../public/index.html');
+        console.log('----pathlog:', indexFile);
+        res.sendFile(indexFile);
+    });
 
     app.use(function (err, req, res, next) {
         if(!err) {
