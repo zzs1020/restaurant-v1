@@ -45,7 +45,7 @@
                             <button class="btn btn-primary" ng-click="resvCtrl.setSearchId(reservation._id)">
                                 <span class="glyphicon glyphicon-pencil"></span> Edit
                             </button>
-                            <button class="btn btn-danger" ng-click="resvCtrl.del(reservation._id)">
+                            <button class="btn btn-danger" ng-click="resvCtrl.del(reservation._id, $index)">
                                 <span class="glyphicon glyphicon-remove"></span> Remove
                             </button>
                         </td>

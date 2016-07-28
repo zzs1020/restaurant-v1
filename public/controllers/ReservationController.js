@@ -25,11 +25,12 @@ app.controller('ReservationController', ['$uibModal', '$rootScope', 'reserveServ
     };
 
     //remove item
-    self.del = function (id) {
+    self.del = function (id, index) {
         if(confirm('are you sure?')){
             reserveService.del(id).then(function (data) {
                 console.log('delete success:' , data.valueOf());
-                self.loadReservations();
+                // self.loadReservations();
+                self.list.splice(index, 1);
             });
         }
     };
